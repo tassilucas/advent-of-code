@@ -34,17 +34,14 @@ def check_bounds(i, j):
     else:
         return False
 
-proc = []
-
 for h in range(len(m[0])):
     for e in range(len(m)):
         if m[h][e] != '.' and m[h][e] != '#':
             for i in range(len(m[0])):
                 for j in range(len(m)):
-                    if m[i][j] == m[h][e] and i != h and j != e and (h, e, i, j) not in proc:
+                    if m[i][j] == m[h][e] and i != h and j != e:
                         cut1 = cut2 = True
                         times = 1
-                        proc.append((h, e, i, j))
                         while cut1 and cut1:
                             y, x, z, w = calculate_antinodes(h, e, i, j, times)
                             if check_bounds(y, x) and cut1:
